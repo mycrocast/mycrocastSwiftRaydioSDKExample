@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BBC5A3A92D259AC9004585D3 /* SwiftRaydioSDK in Frameworks */ = {isa = PBXBuildFile; productRef = BBC5A3A82D259AC9004585D3 /* SwiftRaydioSDK */; };
+		3CC04FA332B7DF1E85B5D610 /* Pods_mycrocastSwiftRaydioSDKExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4F4B8F1E063D998FBFB34 /* Pods_mycrocastSwiftRaydioSDKExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		96F4F4B8F1E063D998FBFB34 /* Pods_mycrocastSwiftRaydioSDKExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mycrocastSwiftRaydioSDKExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAF46219CD86EA3BB5232129 /* Pods-mycrocastSwiftRaydioSDKExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mycrocastSwiftRaydioSDKExample.release.xcconfig"; path = "Target Support Files/Pods-mycrocastSwiftRaydioSDKExample/Pods-mycrocastSwiftRaydioSDKExample.release.xcconfig"; sourceTree = "<group>"; };
 		BB8B70BD2D257276001EE8BF /* mycrocastSwiftRaydioSDKExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mycrocastSwiftRaydioSDKExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7F29CB253B45B73C529C437 /* Pods-mycrocastSwiftRaydioSDKExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mycrocastSwiftRaydioSDKExample.debug.xcconfig"; path = "Target Support Files/Pods-mycrocastSwiftRaydioSDKExample/Pods-mycrocastSwiftRaydioSDKExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -23,18 +26,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBC5A3A92D259AC9004585D3 /* SwiftRaydioSDK in Frameworks */,
+				3CC04FA332B7DF1E85B5D610 /* Pods_mycrocastSwiftRaydioSDKExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		234D2D64D40FC371B3ECB9C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96F4F4B8F1E063D998FBFB34 /* Pods_mycrocastSwiftRaydioSDKExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		39F9B70FD4D6EBED878A26B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F7F29CB253B45B73C529C437 /* Pods-mycrocastSwiftRaydioSDKExample.debug.xcconfig */,
+				BAF46219CD86EA3BB5232129 /* Pods-mycrocastSwiftRaydioSDKExample.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		BB8B70B42D257276001EE8BF = {
 			isa = PBXGroup;
 			children = (
 				BB8B70BF2D257276001EE8BF /* mycrocastSwiftRaydioSDKExample */,
 				BB8B70BE2D257276001EE8BF /* Products */,
+				39F9B70FD4D6EBED878A26B6 /* Pods */,
+				234D2D64D40FC371B3ECB9C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,9 +75,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB8B70CB2D257277001EE8BF /* Build configuration list for PBXNativeTarget "mycrocastSwiftRaydioSDKExample" */;
 			buildPhases = (
+				2031EDD9DFAFC52ED0745F21 /* [CP] Check Pods Manifest.lock */,
 				BB8B70B92D257276001EE8BF /* Sources */,
 				BB8B70BA2D257276001EE8BF /* Frameworks */,
 				BB8B70BB2D257276001EE8BF /* Resources */,
+				FED922E3D32B301F73E6F2B5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -66,7 +90,6 @@
 			);
 			name = mycrocastSwiftRaydioSDKExample;
 			packageProductDependencies = (
-				BBC5A3A82D259AC9004585D3 /* SwiftRaydioSDK */,
 			);
 			productName = mycrocastSwiftRaydioSDKExample;
 			productReference = BB8B70BD2D257276001EE8BF /* mycrocastSwiftRaydioSDKExample.app */;
@@ -98,7 +121,6 @@
 			mainGroup = BB8B70B42D257276001EE8BF;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				BBC5A3A72D259AC9004585D3 /* XCRemoteSwiftPackageReference "mycrocastSwiftRaydioSDK" */,
 			);
 			productRefGroup = BB8B70BE2D257276001EE8BF /* Products */;
 			projectDirPath = "";
@@ -118,6 +140,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2031EDD9DFAFC52ED0745F21 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mycrocastSwiftRaydioSDKExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FED922E3D32B301F73E6F2B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mycrocastSwiftRaydioSDKExample/Pods-mycrocastSwiftRaydioSDKExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mycrocastSwiftRaydioSDKExample/Pods-mycrocastSwiftRaydioSDKExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mycrocastSwiftRaydioSDKExample/Pods-mycrocastSwiftRaydioSDKExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BB8B70B92D257276001EE8BF /* Sources */ = {
@@ -167,7 +231,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -230,7 +294,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -251,6 +315,7 @@
 		};
 		BB8B70CC2D257277001EE8BF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7F29CB253B45B73C529C437 /* Pods-mycrocastSwiftRaydioSDKExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -281,6 +346,7 @@
 		};
 		BB8B70CD2D257277001EE8BF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAF46219CD86EA3BB5232129 /* Pods-mycrocastSwiftRaydioSDKExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -331,25 +397,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		BBC5A3A72D259AC9004585D3 /* XCRemoteSwiftPackageReference "mycrocastSwiftRaydioSDK" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mycrocast/mycrocastSwiftRaydioSDK";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.41.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		BBC5A3A82D259AC9004585D3 /* SwiftRaydioSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BBC5A3A72D259AC9004585D3 /* XCRemoteSwiftPackageReference "mycrocastSwiftRaydioSDK" */;
-			productName = SwiftRaydioSDK;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BB8B70B52D257276001EE8BF /* Project object */;
 }
