@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BBC5A3A92D259AC9004585D3 /* SwiftRaydioSDK in Frameworks */ = {isa = PBXBuildFile; productRef = BBC5A3A82D259AC9004585D3 /* SwiftRaydioSDK */; };
+		BB17399F2D4D1BF800051BAE /* SwiftRaydioSDK in Frameworks */ = {isa = PBXBuildFile; productRef = BB17399E2D4D1BF800051BAE /* SwiftRaydioSDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBC5A3A92D259AC9004585D3 /* SwiftRaydioSDK in Frameworks */,
+				BB17399F2D4D1BF800051BAE /* SwiftRaydioSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,7 +66,7 @@
 			);
 			name = mycrocastSwiftRaydioSDKExample;
 			packageProductDependencies = (
-				BBC5A3A82D259AC9004585D3 /* SwiftRaydioSDK */,
+				BB17399E2D4D1BF800051BAE /* SwiftRaydioSDK */,
 			);
 			productName = mycrocastSwiftRaydioSDKExample;
 			productReference = BB8B70BD2D257276001EE8BF /* mycrocastSwiftRaydioSDKExample.app */;
@@ -98,7 +98,7 @@
 			mainGroup = BB8B70B42D257276001EE8BF;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				BBC5A3A72D259AC9004585D3 /* XCRemoteSwiftPackageReference "mycrocastSwiftRaydioSDK" */,
+				BB17399D2D4D1BF800051BAE /* XCRemoteSwiftPackageReference "mycrocastSwiftRaydioSDK" */,
 			);
 			productRefGroup = BB8B70BE2D257276001EE8BF /* Products */;
 			projectDirPath = "";
@@ -333,20 +333,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BBC5A3A72D259AC9004585D3 /* XCRemoteSwiftPackageReference "mycrocastSwiftRaydioSDK" */ = {
+		BB17399D2D4D1BF800051BAE /* XCRemoteSwiftPackageReference "mycrocastSwiftRaydioSDK" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mycrocast/mycrocastSwiftRaydioSDK";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.41.0;
+				minimumVersion = 2.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BBC5A3A82D259AC9004585D3 /* SwiftRaydioSDK */ = {
+		BB17399E2D4D1BF800051BAE /* SwiftRaydioSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BBC5A3A72D259AC9004585D3 /* XCRemoteSwiftPackageReference "mycrocastSwiftRaydioSDK" */;
+			package = BB17399D2D4D1BF800051BAE /* XCRemoteSwiftPackageReference "mycrocastSwiftRaydioSDK" */;
 			productName = SwiftRaydioSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
