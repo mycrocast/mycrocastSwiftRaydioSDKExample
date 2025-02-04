@@ -2,14 +2,14 @@ PODS:
   - Socket.IO-Client-Swift (16.1.1):
     - Starscream (~> 4.0.8)
   - Starscream (4.0.8)
-  - SwiftRaydioSDK (1.25):
+  - SwiftRaydioSDK (2.00.0):
     - Socket.IO-Client-Swift (~> 16.0)
 
 DEPENDENCIES:
   - SwiftRaydioSDK
 
 SPEC REPOS:
-  https://github.com/mycrocast/mycrocastSwiftRaydioSDK.git:
+  https://github.com/mycrocast/mycrocastRaydioSDKPodsSpec:
     - SwiftRaydioSDK
   trunk:
     - Socket.IO-Client-Swift
@@ -18,8 +18,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Socket.IO-Client-Swift: 3614bea82ba005df1c2ff01154f4004993e05ad7
   Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
-  SwiftRaydioSDK: 43f0120988db3a63c1fafcd589e254fc6fc79d2b
+  SwiftRaydioSDK: e95b493a6ccf24614298fcfd01fadcc09b23761d
 
-PODFILE CHECKSUM: da33a9cf62a189d98a47fc307e24cfee0ab0c3cc
+PODFILE CHECKSUM: 4bf92b11d8d2cdaac87abe97c6bdb8c5104d4802
 
 COCOAPODS: 1.16.2

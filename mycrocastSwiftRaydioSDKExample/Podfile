@@ -1,8 +1,9 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
+source 'https://github.com/mycrocast/mycrocastRaydioSDKPodsSpec.git'
 source 'https://cdn.cocoapods.org/'
-source 'https://github.com/mycrocast/mycrocastSwiftRaydioSDK.git'
+
 
 target 'mycrocastSwiftRaydioSDKExample' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -10,13 +11,5 @@ target 'mycrocastSwiftRaydioSDKExample' do
 
   pod 'SwiftRaydioSDK'
 
-  
-  
-  # Pods for mycrocastSwiftRaydioSDKExample
-  
-  target 'mycrocastSwiftRaydioSDKExample' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 
 end
