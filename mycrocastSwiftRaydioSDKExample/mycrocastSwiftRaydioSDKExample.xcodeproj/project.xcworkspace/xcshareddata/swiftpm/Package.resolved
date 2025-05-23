@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mycrocast/mycrocastSwiftRaydioSDK",
       "state" : {
-        "revision" : "912d6d733c8571581a1cf07c0ae1c3094160274d",
-        "version" : "2.1.2"
+        "revision" : "9873c9eefae91fa7e8c0cdaa5b85abc03ed591f5",
+        "version" : "2.1.3"
       }
     },
     {
