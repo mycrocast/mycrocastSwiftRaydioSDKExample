@@ -2,7 +2,7 @@ PODS:
   - Socket.IO-Client-Swift (16.1.1):
     - Starscream (~> 4.0.8)
   - Starscream (4.0.8)
-  - SwiftRaydioSDK (2.01.3):
+  - SwiftRaydioSDK (2.01.4):
     - Socket.IO-Client-Swift (~> 16.0)
 
 DEPENDENCIES:
@@ -18,7 +18,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Socket.IO-Client-Swift: 3614bea82ba005df1c2ff01154f4004993e05ad7
   Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
-  SwiftRaydioSDK: d63a98f2e5125372af2df2215187dc98d48e62ee
+  SwiftRaydioSDK: ccba8f601829414754d8f8a42206331c33f37aef
 
 PODFILE CHECKSUM: 4bf92b11d8d2cdaac87abe97c6bdb8c5104d4802
 
