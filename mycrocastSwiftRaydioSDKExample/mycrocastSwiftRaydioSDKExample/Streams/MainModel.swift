@@ -5,8 +5,6 @@ import Combine
 import AVFoundation;
 import MediaPlayer
 
-
-
 class MainModel: ObservableObject {
 
     /// used to observe network changes
@@ -14,6 +12,7 @@ class MainModel: ObservableObject {
     private var networkMonitor: NetworkMonitorProviding
 
     private var cancelable: Set<AnyCancellable> = []
+    private var currentPlayState: RaydioPlayState = .idle
 
     @Published
     var streams: [MycrocastStream] = []
@@ -69,6 +68,7 @@ class MainModel: ObservableObject {
         self.sdk.listenStateAccess.listenState$.sink {
             state in
             print(state)
+            self.currentPlayState = state
             if (state == .playing) {
                 print("Audio is playing")
                 // TODO you could stop the timer if you
@@ -120,7 +120,9 @@ class MainModel: ObservableObject {
         Task {
             // TODO evaluate
             if (await self.sdk.onForegroundEntered()) {
-                let result = await self.sdk.reconnectAudio()
+                if (self.currentPlayState != .idle && self.currentPlayState != .playing) {
+                    let result = await self.sdk.reconnectAudio()
+                }
             }
         }
     }
