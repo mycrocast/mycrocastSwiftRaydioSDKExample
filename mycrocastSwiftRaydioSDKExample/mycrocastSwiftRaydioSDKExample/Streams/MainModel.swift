@@ -12,7 +12,6 @@ class MainModel: ObservableObject {
     private var networkMonitor: NetworkMonitorProviding
 
     private var cancelable: Set<AnyCancellable> = []
-    private var currentPlayState: RaydioPlayState = .idle
 
     @Published
     var streams: [MycrocastStream] = []
@@ -20,27 +19,62 @@ class MainModel: ObservableObject {
     @Published
     var activeStream: String? = nil
 
-    var sdk: MycrocastRaydioSDK
+    @Published
+    var initialised: Bool = false
 
-    init() {
-        self.sdk = RaydioSDK.shared.start("1567504890375_8741a554-c25e-428f-a807-a69bac373315-9999")
-        
-        self.sdk.streamsAccess.streams$.sink {
+    var sdk: MycrocastRaydioSDK?
+
+    var locationManager: LocationManager = LocationManager()
+
+    init(useLocation: Bool = false) {
+        if (!useLocation) {
+            self.initSDK()
+            return
+        }
+
+        locationManager.location$.sink ( receiveCompletion: {
+            completion in
+            switch completion {
+            case .finished:
+                print("Finished - should not be called")
+            case .failure(let error):
+                print("failed with \(error)")
+            }
+        }, receiveValue: {
+            value in
+            if (self.sdk != nil) {
+                return
+            }
+            guard let location = value else {
+                return
+            }
+            self.initSDK(location: Location(latitude: location.latitude, longitude: location.longitude))
+
+        }).store(in: &self.cancelable)
+
+        locationManager.requestLocation()
+    }
+
+    private func initSDK(location: Location? = nil) {
+        let sdk = RaydioSDK.shared.start("1567504890375_8741a554-c25e-428f-a807-a69bac373315-9999", location: location)
+
+
+        sdk.streamsAccess.streams$.sink {
             streams in
             self.streams = streams
         }.store(in: &self.cancelable)
-        
-        self.sdk.streamsAccess.streamAdded$.sink {
+
+        sdk.streamsAccess.streamAdded$.sink {
             added in
             print("Stream was added " + added.title)
         }.store(in: &self.cancelable)
 
-        self.sdk.streamsAccess.streamRemoved$.sink {
+        sdk.streamsAccess.streamRemoved$.sink {
             added in
             print("Stream was removed " + added.title)
         }.store(in: &self.cancelable)
-        
-        self.sdk.streamsAccess.streamUpdated$.sink { [unowned self]
+
+        sdk.streamsAccess.streamUpdated$.sink { [unowned self]
             added in
             print("Stream was updated " + added.title)
             if let activeStream = sdk.activeStream {
@@ -51,24 +85,23 @@ class MainModel: ObservableObject {
                     print("Streamer has connection issue!")
                 }
             }
-            
+
         }.store(in: &self.cancelable)
-        
-        self.sdk.logAccess.jsonLog$.sink {
+
+        sdk.logAccess.jsonLog$.sink {
             log in
             print(log)
         }.store(in: &self.cancelable)
-        
-        self.sdk.sdkStateAccess.sdkState$.sink {
+
+        sdk.sdkStateAccess.sdkState$.sink {
             state in
             print("SDK State: " )
             print(state)
         }.store(in: &self.cancelable)
-        
-        self.sdk.listenStateAccess.listenState$.sink {
+
+        sdk.listenStateAccess.listenState$.sink {
             state in
             print(state)
-            self.currentPlayState = state
             if (state == .playing) {
                 print("Audio is playing")
                 // TODO you could stop the timer if you
@@ -76,22 +109,32 @@ class MainModel: ObservableObject {
                 // if we automatically play again, the stream was reconected
             }
         }.store(in: &self.cancelable)
+
+        self.sdk = sdk
+        self.initialised = true
+        self.onAppear()
     }
 
 
     func onAppear() {
-       Task {
-            let success = await self.sdk.connect()
-           if (!success) {
-               print("Failed to connect. Is the network connection present?")
-           }
+        Task {
+            guard let sdk = self.sdk else {
+                return
+            }
+            let success = await sdk.connect()
+            if (!success) {
+                print("Failed to connect. Is the network connection present?")
+            }
             self.networkMonitor.networkChanged$
                 .sink { [weak self]
-                networkAvailable in
+                    networkAvailable in
                     if let this = self {
                         if (networkAvailable) {
                             Task {
-                                let result = await this.sdk.onConnectionReestablished()
+                                guard let sdk = this.sdk else {
+                                    return
+                                }
+                                let result = await sdk.onConnectionReestablished()
                                 if (!result) {
                                     print("Failed to reconnect")
                                     return
@@ -99,30 +142,33 @@ class MainModel: ObservableObject {
                                 guard let activeStream = this.activeStream else {
                                     return
                                 }
-                                let reconnectAudioError = await this.sdk.reconnectAudio()
+                                let reconnectAudioError = await sdk.reconnectAudio()
                                 if let error = reconnectAudioError {
                                     this.activeStream = nil
                                 }
                             }
                             return
                         }
-                        this.sdk.onConnectionLost()
+                        sdk.onConnectionLost()
                     }
                 }.store(in: &self.cancelable)
         }
     }
 
     func onWentToBackground() {
-        self.sdk.onBackgroundEntered()
+        guard let sdk = self.sdk else {
+            return
+        }
+        sdk.onBackgroundEntered()
     }
 
     func onWentToForeground() {
         Task {
-            // TODO evaluate
-            if (await self.sdk.onForegroundEntered()) {
-                if (self.currentPlayState != .idle && self.currentPlayState != .playing) {
-                    let result = await self.sdk.reconnectAudio()
-                }
+            guard let sdk = self.sdk else {
+                return
+            }
+            if (await sdk.onForegroundEntered()) {
+                let result = await sdk.reconnectAudio()
             }
         }
     }
@@ -137,8 +183,11 @@ class MainModel: ObservableObject {
 
     func onStreamPressed(_ streamId: String) {
         self.configureAudioSession()
+        guard let sdk = self.sdk else {
+            return
+        }
         if let activeStream = self.activeStream {
-            self.sdk.pauseCurrentStream()
+            sdk.pauseCurrentStream()
             self.activeStream = nil
             if (activeStream == streamId) {
                 return
@@ -146,7 +195,7 @@ class MainModel: ObservableObject {
         }
         self.activeStream = streamId
         Task {
-           let result = await self.sdk.playStream(streamId)
+            let result = await sdk.playStream(streamId)
             print(result)
         }
     }
