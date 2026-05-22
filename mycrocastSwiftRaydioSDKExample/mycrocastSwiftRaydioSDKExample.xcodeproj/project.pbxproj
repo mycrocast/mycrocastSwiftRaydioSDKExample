@@ -338,7 +338,7 @@
 			repositoryURL = "https://github.com/mycrocast/mycrocastSwiftRaydioSDK";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.4;
+				minimumVersion = 2.10.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
